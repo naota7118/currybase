@@ -1,0 +1,26 @@
+services:
+  rails:
+    build: .
+    ports:
+      - 3000:3000
+    # command: ["./wait-for-it/wait-for-it.sh", "postgres:5432", "--", "rails", "s", "-b", "0.0.0.0"]
+    command: rails s -b 0.0.0.0
+    env_file:
+      - .env
+    volumes:
+      - .:/currybase
+    working_dir: /currybase
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    platform: linux/x86_64
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    # environment:
+    #   POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
+    volumes:
+      - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d

@@ -1,5 +1,10 @@
-<%= form_with model: @order do |form| %>
+<%= form_with model: @order do |f| %>
   <div>
-    <%= form_with model: @order do |form| %>
+    <%= f.select :curry, ['バターチキンカレー', 'マサラカレー', 'ビーフカレー', 'ポークカレー'] %>
+    <%= f.select :spiceness, ['甘口', '普通', '辛口', '激辛'] %>
+    <%= f.select :ricesize, [150, 200, 250, 300, 350, 400] %>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+    <%= f.submit '送信' %>
   </div>
 <% end %>

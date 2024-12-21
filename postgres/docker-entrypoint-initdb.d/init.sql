@@ -22,13 +22,13 @@ CREATE TABLE spicinesses (
 
 CREATE TABLE ricesizes (
   ricesize_id int PRIMARY KEY,
-  ricesize_name varchar(80) NOT NULL,
-  ricesize_price int NOT NULL
+  name varchar(80) NOT NULL,
+  price int NOT NULL
 );
 
 CREATE TABLE curries (
-  curry_id int PRIMARY KEY,
-  curry_name varchar(80) NOT NULL,
+  id int PRIMARY KEY,
+  name varchar(80) NOT NULL,
   price int NOT NULL,
   category_id int REFERENCES categories(category_id)
 );
@@ -36,7 +36,7 @@ CREATE TABLE curries (
 -- 注文履歴
 CREATE TABLE orders (
   order_id int PRIMARY KEY,
-  curry_id int REFERENCES curries(curry_id),
+  id int REFERENCES curries(id),
   spicinesses_id int REFERENCES spicinesses(spiciness_id) DEFAULT 2,
   ricesize_id int REFERENCES ricesizes(ricesize_id) DEFAULT 4,
   order_price int NOT NULL DEFAULT 0

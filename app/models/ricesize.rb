@@ -1,3 +1,3 @@
 class Ricesize < ApplicationRecord
-  has_many: orders
+  has_many :orders
 end

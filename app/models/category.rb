@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_many: curries
+  has_many :curries
 end

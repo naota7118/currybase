@@ -4,19 +4,16 @@
   // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    
+
     {
       "type": "rdbg",
-      "name": "Debug current file with rdbg",
+      "name": "Debug Rails",
       "request": "launch",
-      "script": "${file}",
+      "cwd": "${workspaceRoot}",
+      "script": "bin/rails server",
       "args": [],
-      "askParameters": true
-    },
-    {
-      "type": "rdbg",
-      "name": "Attach with rdbg",
-      "request": "attach"
+      "askParameters": false,
+      "useBundler": true
     }
   ]
 }

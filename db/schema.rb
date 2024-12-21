@@ -36,13 +36,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_20_075955) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "curry_id"
+    t.bigint "id"
     t.bigint "spiceness_id"
     t.bigint "ricesize_id", default: 0
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["curry_id"], name: "index_orders_on_curry_id"
+    t.index ["id"], name: "index_orders_on_id"
     t.index ["ricesize_id"], name: "index_orders_on_ricesize_id"
     t.index ["spiceness_id"], name: "index_orders_on_spiceness_id"
   end

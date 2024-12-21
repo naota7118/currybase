@@ -1,8 +1,8 @@
 <%= form_with model: @order do |f| %>
   <div>
-    <%= f.collection_select :curry_id, @curries, :id, :name, prompt: 'カレーを選んでください' %>
-    <%= f.collection_select :ricesize_id, @ricesizes, :id, :name, prompt: 'ライス量を選んでください' %>
-    <%= f.collection_select :spiceness_id, @spicenesses, :id, :name, prompt: '辛さを選んでください' %>
+    <%= f.collection_select :curry_id, @curries, :id, :name, prompt: 'カレーを選択する' %>
+    <%= f.collection_select :ricesize_id, @ricesizes, :id, :name, prompt: 'ライス量を選択する' %>
+    <%= f.collection_select :spiceness_id, @spicenesses, :id, :name, prompt: '辛さを選択する' %>
     <%= f.text_field :price %>
     <%= f.submit '送信' %>
   </div>

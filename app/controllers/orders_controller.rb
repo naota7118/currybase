@@ -5,12 +5,10 @@ class OrdersController < ApplicationController
     @curries = Curry.all
     @ricesizes = Ricesize.all
     @spicenesses = Spiceness.all
-    # binding.pry
   end
 
   def create
     @order = Order.build(order_params)
-    binding.pry
     if @order.save
       redirect_to @order, notice: '注文が作成されました。'
     else
@@ -21,7 +19,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # render :show
   end
 
   private

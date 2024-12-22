@@ -1,5 +1,16 @@
 class OrdersController < ApplicationController
 
+  def index
+    if params[:id].present?
+      begin
+        @curry = Curry.find(params[:id])
+        render json: @curry
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: "Curry not found" }, status: :not_found
+      end
+    end
+  end
+
   def new
     @order = Order.new
     @curries = Curry.all

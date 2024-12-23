@@ -1,14 +1,14 @@
 class OrdersController < ApplicationController
 
   def index
-    if params[:id].present?
-      begin
-        @curry = Curry.find(params[:id])
-        render json: @curry
-      rescue ActiveRecord::RecordNotFound
-        render json: { error: "Curry not found" }, status: :not_found
-      end
-    end
+    response = {
+      curry: @curry = Curry.find_by(id: params[:curry_id]) || false,
+      ricesize: @ricesize = Ricesize.find_by(id: params[:ricesize_id]) || false,
+      spiceness: @spiceness = Spiceness.find_by(id: params[:spiceness_id]) || false
+    }
+
+    response = response.find_all {|key, value| value != false}
+    render json: response
   end
 
   def new

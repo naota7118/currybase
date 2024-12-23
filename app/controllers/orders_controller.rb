@@ -1,5 +1,16 @@
 class OrdersController < ApplicationController
 
+  def index
+    response = {
+      curry: @curry = Curry.find_by(id: params[:curry_id]) || false,
+      ricesize: @ricesize = Ricesize.find_by(id: params[:ricesize_id]) || false,
+      spiceness: @spiceness = Spiceness.find_by(id: params[:spiceness_id]) || false
+    }
+
+    response = response.find_all {|key, value| value != false}
+    render json: response
+  end
+
   def new
     @order = Order.new
     @curries = Curry.all

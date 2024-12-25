@@ -36,6 +36,23 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def edit
+    @order = Order.find(params[:id])
+    @curries = Curry.all
+    @ricesizes = Ricesize.all
+    @spicenesses = Spiceness.all
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    if request.referrer.nil?
+      redirect_to root_url, status: :see_other
+    else
+      redirect_to request.referrer, status: :see_other
+    end
+  end
+
   private
     def order_params
       params.require(:order).permit(:id, :curry_id, :spiceness_id, :ricesize_id, :price)

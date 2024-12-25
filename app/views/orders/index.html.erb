@@ -3,5 +3,7 @@
     <p>カレー：<%= order.curry.name %></p>
     <p>ライス量：<%= order.ricesize.name %></p>
     <p>辛さ：<%= order.spiceness.name %></p>
+    <%= link_to "delete", order, data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" }%>
+    <%= link_to "edit", edit_order_path(order.id) %>
   </div>
 <% end %>

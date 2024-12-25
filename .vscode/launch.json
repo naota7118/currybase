@@ -13,7 +13,8 @@
       "script": "bin/rails server",
       "args": [],
       "askParameters": false,
-      "useBundler": true
+      "useBundler": true,
+      "postDebugTask": "terminate-rails-process"
     }
   ]
 }

@@ -7,7 +7,8 @@ gem "rails", "~> 7.1.5", ">= 7.1.5.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "bootstrap-sass",  "3.4.1"
-gem "sprockets-rails"
+gem "sassc-rails",     "2.1.2"
+gem "sprockets-rails", "3.4.2"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

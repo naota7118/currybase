@@ -6,6 +6,7 @@ ruby "3.3.0"
 gem "rails", "~> 7.1.5", ">= 7.1.5.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "bootstrap-sass",  "3.4.1"
 gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record

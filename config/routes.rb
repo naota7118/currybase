@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   resources :orders
   get 'api/orders', to: 'orders#fetch_orders'
-  # Defines the root path route ("/")
-  # root "posts#index"
+  get 'sign_up', to: 'customers#new'
+  resources :customers
 end

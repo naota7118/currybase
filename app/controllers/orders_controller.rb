@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
+    @orders = Order.all
     response = {
       curry: @curry = Curry.find_by(id: params[:curry_id]) || false,
       ricesize: @ricesize = Ricesize.find_by(id: params[:ricesize_id]) || false,

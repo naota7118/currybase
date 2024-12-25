@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
-  def index
-    @orders = Order.all
+  def fetch_orders
     response = {
       curry: @curry = Curry.find_by(id: params[:curry_id]) || false,
       ricesize: @ricesize = Ricesize.find_by(id: params[:ricesize_id]) || false,
@@ -10,6 +9,10 @@ class OrdersController < ApplicationController
 
     response = response.find_all {|key, value| value != false}
     render json: response
+  end
+
+  def index
+    @orders = Order.all
   end
 
   def new

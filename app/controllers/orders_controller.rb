@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  def index
+  def fetch_orders
     response = {
       curry: @curry = Curry.find_by(id: params[:curry_id]) || false,
       ricesize: @ricesize = Ricesize.find_by(id: params[:ricesize_id]) || false,
@@ -9,6 +9,10 @@ class OrdersController < ApplicationController
 
     response = response.find_all {|key, value| value != false}
     render json: response
+  end
+
+  def index
+    @orders = Order.all
   end
 
   def new
@@ -30,6 +34,32 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+  end
+
+  def edit
+    @order = Order.find(params[:id])
+    @curries = Curry.all
+    @ricesizes = Ricesize.all
+    @spicenesses = Spiceness.all
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      redirect_to @order
+    else
+      render 'edit', status: 'unprocessable_entity'
+    end
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    if request.referrer.nil?
+      redirect_to root_url, status: :see_other
+    else
+      redirect_to request.referrer, status: :see_other
+    end
   end
 
   private

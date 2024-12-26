@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
+  root 'orders#index'
   resources :orders
   get 'api/orders', to: 'orders#fetch_orders'
   get 'login', to: 'sessions#new'

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy]
 
   def fetch_orders
     response = {
@@ -23,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.build(order_params)
+    @order = current_customer.orders.build(order_params)
     if @order.save
       redirect_to @order, notice: '注文が作成されました。'
     else

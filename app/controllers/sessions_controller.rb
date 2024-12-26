@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if customer && customer.authenticate(params[:session][:password])
       reset_session
       log_in customer
-      redirect_to customer
+      redirect_to root_path
     else
       flash[:danger] = 'Invalid email/password combination'
       render 'new', status: :unprocessable_entity
